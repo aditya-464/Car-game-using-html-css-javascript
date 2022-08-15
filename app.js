@@ -1,3 +1,4 @@
+const scoreDiv = document.querySelector(".score");
 const score = document.querySelector(".current-score");
 const highScore = document.querySelector(".high-score");
 const gameArea = document.querySelector(".game-area");
@@ -136,5 +137,6 @@ function start() {
 
     // ************* INITIALIZING THE SCORE ***********
     player.score = 0;
+    scoreDiv.style.height = "12rem";
     window.requestAnimationFrame(gameplay);
 }
