@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url(/car-game-bg-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hide {
+    display: none;
+}
+
+.car-game {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+.score {
+    width: 20vw;
+    height: 10rem;
+    padding: 1.5rem;
+    background-color: rgb(89, 172, 89);
+    margin: 3rem 0 0 3rem;
+    font-size: 3rem;
+    color: white;
+    text-transform: capitalize;
+    text-align: center;
+    border: 2px solid pink;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.score .high-score{
+    font-size: 2.3rem;
+    color: rgb(192, 223, 248);
+}
+
+.game-area {
+    /* border: 2px solid black; */
+    margin: 0 15rem;
+    width: 58rem;
+    height: 100vh;
+    background-color: #2d3436;
+    overflow: hidden;
+    position: relative;
+    border-right: 0.7rem dashed white;
+    border-left: 0.7rem dashed white;
+}
+
+.road-line {
+    position: absolute;
+    top: 5rem;
+    left: 29rem;
+    width: 1.5rem;
+    height: 10rem;
+    background-color: white;
+}
+
+.car-div,
+.enemy-car-div {
+    position: absolute;
+    bottom: 3rem;
+    width: 5rem;
+    height: 7rem;
+    background-color: red;
+}
+
+.enemy-car-div {
+    background-color: aquamarine;
+}
+
+.start-screen {
+    position: absolute;
+    top: 10rem;
+    left: 40rem;
+    width: 50vw;
+    padding: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.7rem;
+    margin: 0 auto;
+    margin-top: 15rem;
+    background-color: rgb(225, 75, 75);
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
