@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    background-image: url(/car-game-bg-image.jpg);
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url(/car-game-bg-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -47,7 +47,6 @@ body {
 }
 
 .game-area {
-    /* border: 2px solid black; */
     margin: 0 15rem;
     width: 58rem;
     height: 100vh;
@@ -74,10 +73,15 @@ body {
     width: 5rem;
     height: 7rem;
     background-color: red;
+    border: 2px solid goldenrod;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
 .enemy-car-div {
     background-color: aquamarine;
+    border: 2px solid silver;
 }
 
 .start-screen {
