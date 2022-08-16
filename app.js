@@ -183,9 +183,6 @@ function start() {
 }
 
 
-
-
-
 // *************** WHEN GAME IS PAUSED **************************
 document.addEventListener("keydown", (e) => {
     if (e.key === " ") {
@@ -204,6 +201,8 @@ document.addEventListener("keydown", (e) => {
     }
 })
 
+
+// ************** GENERATE RANDOM COLOURS FOR ENEMY CARS **************
 function generateRandomColour() {
     let r = Math.ceil(Math.random() * 256);
     let g = Math.ceil(Math.random() * 256);
