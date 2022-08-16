@@ -4,6 +4,13 @@ const highScore = document.querySelector(".high-score");
 const gameArea = document.querySelector(".game-area");
 const startScreen = document.querySelector(".start-screen");
 
+// **************** PAUSE-SCREEN ******************
+const pauseDiv = document.createElement("div");
+pauseDiv.classList.add("hide");
+pauseDiv.textContent = "Game is paused";
+pauseDiv.classList.add("pause-screen");
+gameArea.appendChild(pauseDiv);
+
 let hsVal = localStorage.getItem("highScoreVal");
 if (hsVal === null) {
     localStorage.setItem("highScoreVal", 0);
@@ -58,6 +65,7 @@ function moveEnemyCars(myCar) {
             console.log("BUSTED !!!!!");
             player.start = false;
             startScreen.textContent = "Game Over"
+            startScreen.style.top = "15rem";
             startScreen.classList.remove("hide");
             if (player.score > hsVal) {
                 localStorage.setItem("highScoreVal", player.score);
@@ -120,6 +128,7 @@ function gameplay(ctime) {
 function start() {
     startScreen.classList.add("hide");
     gameArea.innerHTML = "";
+    gameArea.appendChild(pauseDiv);
     player.start = true;
 
     // ************** ROAD LINES ***************
@@ -158,18 +167,23 @@ function start() {
 }
 
 
+
+
+
 // *************** WHEN GAME IS PAUSED **************************
 document.addEventListener("keydown", (e) => {
     if (e.key === " ") {
         if (pauseGame === true) {
             pauseGame = false;
             console.log("Pause is false");
+            pauseDiv.classList.add("hide");
             gameplay();
         }
         else if (pauseGame === false) {
             pauseGame = true;
             console.log("Pause is true");
+            pauseDiv.classList.remove("hide");
         }
-        
+
     }
 })
