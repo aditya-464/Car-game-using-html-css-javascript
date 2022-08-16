@@ -72,11 +72,13 @@ body {
     bottom: 3rem;
     width: 5rem;
     height: 7rem;
-    background-color: red;
-    border: 2px solid goldenrod;
     background-repeat: no-repeat;
     background-size: cover;
     
+}
+.car-div{
+    background-color: red;
+    border: 0.3rem solid goldenrod;
 }
 
 .enemy-car-div {

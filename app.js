@@ -67,8 +67,11 @@ function moveLines() {
 function moveEnemyCars(myCar) {
     let enemyCars = document.querySelectorAll(".enemy-car-div");
     enemyCars.forEach(function (car) {
+
+        // Use the below line to generate constantly colour changing cars ...
+        // car.style.backgroundColor = "rgb(" + generateRandomColour() + ")";
+
         if (collide(myCar, car)) {
-            console.log("BUSTED !!!!!");
             carCrashSound.play();
             carRunningSound.pause();
             player.start = false;
@@ -88,8 +91,6 @@ function moveEnemyCars(myCar) {
         car.style.top = car.y + "px";
     })
 }
-
-
 
 
 
@@ -129,9 +130,13 @@ function gameplay(ctime) {
         if (pauseGame === false) {
             window.requestAnimationFrame(gameplay);
         }
+        else {
+            carRunningSound.pause();
+        }
 
     }
 }
+
 
 // ******************* START GAME *****************
 function start() {
@@ -161,6 +166,7 @@ function start() {
     for (let i = 0; i < 3; i++) {
         let enemyCar = document.createElement("div");
         enemyCar.classList.add("enemy-car-div");
+        enemyCar.style.backgroundColor = "rgb(" + generateRandomColour() + ")";
         enemyCar.y = i * 300;
         enemyCar.style.top = enemyCar.y + "px";
         enemyCar.style.left = Math.floor(Math.random() * 580) + "px";
@@ -198,3 +204,10 @@ document.addEventListener("keydown", (e) => {
     }
 })
 
+function generateRandomColour() {
+    let r = Math.ceil(Math.random() * 256);
+    let g = Math.ceil(Math.random() * 256);
+    let b = Math.ceil(Math.random() * 256);
+    let rgb = r + "," + b + "," + g;
+    return (rgb);
+}
