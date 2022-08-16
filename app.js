@@ -12,7 +12,8 @@ highScore.textContent = "High-Score : " + localStorage.getItem("highScoreVal");
 
 let keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
 let player = { speed: 10 };
-lastPaintTime = 0;
+let lastPaintTime = 0;
+let lastScore = 0;
 
 startScreen.addEventListener("click", start);
 document.addEventListener("keydown", keyDown);
@@ -101,6 +102,11 @@ function gameplay(ctime) {
             lastPaintTime = ctime;
         }
         score.textContent = "Score : " + player.score;
+
+        if(player.score - lastScore > 100){
+            player.speed +=2;
+            lastScore = player.score;
+        }
         window.requestAnimationFrame(gameplay);
     }
 }
