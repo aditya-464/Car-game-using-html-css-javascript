@@ -14,6 +14,7 @@ let keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: fal
 let player = { speed: 10 };
 let lastPaintTime = 0;
 let lastScore = 0;
+let pauseGame = false;
 
 startScreen.addEventListener("click", start);
 document.addEventListener("keydown", keyDown);
@@ -47,6 +48,7 @@ function moveLines() {
         item.style.top = item.y + "px";
     })
 }
+
 
 // ***************** MOVING THE ENEMY CARS  FUNCTION ******************
 function moveEnemyCars(myCar) {
@@ -103,14 +105,18 @@ function gameplay(ctime) {
         }
         score.textContent = "Score : " + player.score;
 
-        if(player.score - lastScore > 100){
-            player.speed +=2;
+        if (player.score - lastScore > 100) {
+            player.speed += 2;
             lastScore = player.score;
         }
-        window.requestAnimationFrame(gameplay);
+        if (pauseGame === false) {
+            window.requestAnimationFrame(gameplay);
+        }
+
     }
 }
 
+// ******************* START GAME *****************
 function start() {
     startScreen.classList.add("hide");
     gameArea.innerHTML = "";
@@ -124,10 +130,13 @@ function start() {
         roadLine.style.top = roadLine.y + "px";
         gameArea.appendChild(roadLine);
     }
+
+
     // ************** PLAYER CAR ***************
     let car = document.createElement("div");
     car.classList.add("car-div");
     gameArea.appendChild(car);
+
 
     // ************** ENEMY CARS ***************
     for (let i = 0; i < 3; i++) {
@@ -141,8 +150,26 @@ function start() {
     player.x = car.offsetLeft;
     player.y = car.offsetTop;
 
+
     // ************* INITIALIZING THE SCORE ***********
     player.score = 0;
     scoreDiv.style.height = "12rem";
     window.requestAnimationFrame(gameplay);
 }
+
+
+// *************** WHEN GAME IS PAUSED **************************
+document.addEventListener("keydown", (e) => {
+    if (e.key === " ") {
+        if (pauseGame === true) {
+            pauseGame = false;
+            console.log("Pause is false");
+            gameplay();
+        }
+        else if (pauseGame === false) {
+            pauseGame = true;
+            console.log("Pause is true");
+        }
+        
+    }
+})
