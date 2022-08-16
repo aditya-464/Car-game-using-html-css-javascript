@@ -4,12 +4,20 @@ const highScore = document.querySelector(".high-score");
 const gameArea = document.querySelector(".game-area");
 const startScreen = document.querySelector(".start-screen");
 
+// ********************* GAME SOUNDS ********************
+let carIgnitionSound = new Audio("game-sounds/mixkit-car-ignition-1535.wav");
+let carRunningSound = new Audio("game-sounds/mixkit-passing-car-and-urban-ambience-1554.wav");
+let carCrashSound = new Audio("game-sounds/mixkit-car-explosion-debris-1562.wav");
+carIgnitionSound.play();
+
+
 // **************** PAUSE-SCREEN ******************
 const pauseDiv = document.createElement("div");
 pauseDiv.classList.add("hide");
 pauseDiv.textContent = "Game is paused";
 pauseDiv.classList.add("pause-screen");
 gameArea.appendChild(pauseDiv);
+
 
 let hsVal = localStorage.getItem("highScoreVal");
 if (hsVal === null) {
@@ -28,11 +36,9 @@ document.addEventListener("keydown", keyDown);
 document.addEventListener("keyup", keyUp);
 
 function keyDown(e) {
-    // e.preventDefault();
     keys[e.key] = true;
 }
 function keyUp(e) {
-    // e.preventDefault();
     keys[e.key] = false;
 }
 
@@ -63,6 +69,8 @@ function moveEnemyCars(myCar) {
     enemyCars.forEach(function (car) {
         if (collide(myCar, car)) {
             console.log("BUSTED !!!!!");
+            carCrashSound.play();
+            carRunningSound.pause();
             player.start = false;
             startScreen.textContent = "Game Over"
             startScreen.style.top = "15rem";
@@ -89,6 +97,7 @@ function gameplay(ctime) {
     let car = document.querySelector(".car-div");
     let roadDimmension = gameArea.getBoundingClientRect();
     if (player.start) {
+        carRunningSound.play();
         // ************* MOVING THE ROAD LINES **************
         moveLines();
 
@@ -126,6 +135,7 @@ function gameplay(ctime) {
 
 // ******************* START GAME *****************
 function start() {
+    carIgnitionSound.pause();
     startScreen.classList.add("hide");
     gameArea.innerHTML = "";
     gameArea.appendChild(pauseDiv);
@@ -187,3 +197,4 @@ document.addEventListener("keydown", (e) => {
 
     }
 })
+
